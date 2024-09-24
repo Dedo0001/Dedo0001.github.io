@@ -16,6 +16,7 @@
     <meta http-equiv='Cache-Control' content='no-siteapp' />
 </head>
 <div id="ton-connect"></div>
+
 <body style="margin: 0;background-color: rgba(86, 192, 202, 1);color: #fff;">
     <!-- Include Eruda from CDN (Recommended) -->
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
@@ -28,11 +29,26 @@
     <script>
         // 开启eruda调试
         eruda.init();
-        // 拉起钱包
+
+        //#region  TON_CONNECT_UI
+        // 自动绑定对应id的元素 如果是button 点击直接拉起钱包
         const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
             manifestUrl: 'https://dedo0001.github.io/tonconnect-manifest.json',
             buttonRootId: 'ton-connect'
         });
+
+        // 代码出发钱包
+        async function connectToWallet() {
+            const tonConnectWallet = await tonConnectUI.connectWallet();
+            console.log("tonConnectWallet---success--->", tonConnectWallet);
+        }
+
+        setTimeout(() => {
+            connectToWallet().catch(err => {
+                console.log("tonConnectWallet---error--->", err);
+            })
+        }, 10 * 1000)
+        //#endregion
     </script>
 </body>
 <script>
