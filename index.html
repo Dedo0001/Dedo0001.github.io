@@ -37,12 +37,19 @@
             buttonRootId: 'ton-connect'
         });
 
+        // 自定义返回策略 如不定义在链接成功后会退出游戏返回聊天界面
+        tonConnectUI.uiOptions = {
+            twaReturnUrl: 'https://dedo0001.github.io'
+        };
+
         // 代码出发钱包
         async function connectToWallet() {
             const tonConnectWallet = await tonConnectUI.connectWallet();
             console.log("tonConnectWallet---success--->", tonConnectWallet);
         }
 
+
+        // 测试代码出发钱包 成功
         setTimeout(() => {
             connectToWallet().catch(err => {
                 console.log("tonConnectWallet---error--->", err);
