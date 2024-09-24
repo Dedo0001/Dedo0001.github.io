@@ -29,7 +29,7 @@
     <script>        
         // 开启eruda调试
         eruda.init();
-        console.log("version---> 0.0.3");
+        console.log("version---> 0.0.4");
 
         //#region  TON_CONNECT_UI
         // 自动绑定对应id的元素 如果是button 点击直接拉起钱包
@@ -65,13 +65,32 @@
         // const walletsList2 = await tonConnectUI.getWallets();
         // const walletsList = await TonConnectUI.getWallets();
 
-        // 测试代码 弹窗
+        // 测试代码 弹窗 还是请求连接的弹窗
+        // 关闭使用 tonConnectUI.closeModal();
         setTimeout(() => {
             tonConnectUI.openModal().catch(err => {
                 console.log("tonConnectUI---tonConnectUI---error--->", err);
             });
         }, 10 * 1000)
+
+        // 测试代码 弹窗状态
+        
+        // 测试代码 弹窗 弹窗状态和关闭原因 return { status: string, closeReason: string }
+        // const currentModalState = tonConnectUI.modalState;
         //#endregion
+
+        const unsubscribeModal = tonConnectUI.onModalStateChange((state) => {
+            console.log("tonConnectUI---onModalStateChange--->", state.status, state.closeReason);
+        })
+
+        setTimeout(() => {
+            tonConnectUI.openModal().catch(err => {
+                console.log("tonConnectUI---tonConnectUI---error--->", err);
+            });
+            setTimeout(unsubscribeModal, 10 * 1000);
+        }, 10 * 1000)
+
+        onModalStateChange 
     </script>
 </body>
 <script>
