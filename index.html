@@ -29,7 +29,7 @@
     <script>        
         // 开启eruda调试
         eruda.init();
-        console.log("version---> 0.0.4");
+        console.log("version---> 0.0.5");
 
         //#region  TON_CONNECT_UI
         // 自动绑定对应id的元素 如果是button 点击直接拉起钱包
@@ -87,7 +87,10 @@
             tonConnectUI.openModal().catch(err => {
                 console.log("tonConnectUI---tonConnectUI---error--->", err);
             });
-            setTimeout(unsubscribeModal, 10 * 1000);
+            setTimeout(() => {
+                unsubscribeModal();
+                console.log("tonConnectUI---unsubscribeModal");
+            }, 10 * 1000);
         }, 10 * 1000)
 
         onModalStateChange 
