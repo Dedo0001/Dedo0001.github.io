@@ -15,88 +15,13 @@
     <meta http-equiv='expires' content='0' />
     <meta http-equiv='Cache-Control' content='no-siteapp' />
 </head>
-<div id="ton-connect"></div>
 
 <body style="margin: 0;background-color: rgba(86, 192, 202, 1);color: #fff;">
-    <!-- Include Eruda from CDN (Recommended) -->
-    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-    <!-- Include TON Connect for JS CDN -->
-    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+
     <script type="text/javascript" src="libs/laya.core-f337e.js"></script>
     <script type="text/javascript" src="libs/laya.ui-ab9ad.js"></script>
-    <script type="text/javascript" src="js/bundle-87172.js"></script>
-    <script type="text/javascript" src="js/index-0528c.js"></script>
-    <script>        
-        // 开启eruda调试
-        eruda.init();
-        console.log("version---> 0.0.5");
-
-        //#region  TON_CONNECT_UI
-        // 自动绑定对应id的元素 如果是button 点击直接拉起钱包
-        const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-            manifestUrl: 'https://dedo0001.github.io/tonconnect-manifest.json',
-            buttonRootId: 'ton-connect'
-        });
-
-        // 自定义返回策略 如不定义在链接成功后会退出游戏返回聊天界面 
-        // 如果是webpage 似乎就不需要这么做了
-        // tonConnectUI.uiOptions = {
-        //     twaReturnUrl: 'https://dedo0001.github.io'
-        // };
-
-        // 代码拉起钱包
-        async function connectToWallet() {
-            // const walletsList = await tonConnectUI.getWallets();
-            // console.log("walletsList---1--->", walletsList);
-            const tonConnectWallet = await tonConnectUI.connectWallet();
-            console.log("tonConnectWallet---success--->", tonConnectWallet);
-            // const walletsList2 = await tonConnectUI.getWallets();
-            // console.log("walletsList---2--->", walletsList2);
-        }
-
-        // // 测试代码来去钱包 成功
-        // setTimeout(() => {
-        //     connectToWallet().catch(err => {
-        //         console.log("tonConnectWallet---error--->", err);
-        //     })
-        // }, 10 * 1000)
-
-        // Fetch wallets list 获取钱包列表        
-        // const walletsList2 = await tonConnectUI.getWallets();
-        // const walletsList = await TonConnectUI.getWallets();
-
-        // 测试代码 弹窗 还是请求连接的弹窗
-        // 关闭使用 tonConnectUI.closeModal();
-        setTimeout(() => {
-            tonConnectUI.openModal().catch(err => {
-                console.log("tonConnectUI---tonConnectUI---error--->", err);
-            });
-        }, 10 * 1000)
-
-        // 测试代码 弹窗状态
-        
-        // 测试代码 弹窗 弹窗状态和关闭原因 return { status: string, closeReason: string }
-        // const currentModalState = tonConnectUI.modalState;
-        //#endregion
-
-        const unsubscribeModal = tonConnectUI.onModalStateChange((state) => {
-            console.log("tonConnectUI---onModalStateChange--->", state.status, state.closeReason);
-        })
-
-        setTimeout(() => {
-            tonConnectUI.openModal().catch(err => {
-                console.log("tonConnectUI---tonConnectUI---error--->", err);
-            });
-            setTimeout(() => {
-                unsubscribeModal();
-                console.log("tonConnectUI---unsubscribeModal");
-            }, 10 * 1000);
-        }, 10 * 1000)
-
-        onModalStateChange 
-    </script>
+    <script type="text/javascript" src="js/bundle-865ad.js"></script>
+    <script type="text/javascript" src="js/index-780d4.js"></script>
 </body>
-<script>
-</script>
 
 </html>
